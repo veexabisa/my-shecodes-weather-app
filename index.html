@@ -21,11 +21,12 @@
   <body>
     <div class="weather-app">
       <header>
-        <form class="search-form">
+        <form class="search-form" id="search-form">
           <input
             type="search"
             placeholder="Enter a city..."
             required
+            id="search-form-input"
             class="search-form-input"
           />
           <input type="submit" value="Search" class="search-form-button" />
@@ -33,14 +34,14 @@
       </header>
       <main>
         <div class="main-wrap">
-          <div class="city">
+          <div class="main-wrap-cities" id="city">
             <h1>Port Elizabeth</h1>
             <p>
               Tuesday 14:49, scattered clouds
               <br />
               Humididty: 60%, Wind: 3.13km/h
             </p>
-          </div>
+            </div>
           <div class="temperature">
             <div class="temperature-emoji">🌤</div>
             <div class="temperature-value">
@@ -49,7 +50,7 @@
             </div>
           </div>
         </div>
-      </main>
+    </main>
       <footer>
         This project was built by
         <a href="https://github.com/veexabisa" target="_blank">
@@ -68,5 +69,6 @@
         >
       </footer>
     </div>
+    <script src="src/app.js"></script>
   </body>
 </html>
