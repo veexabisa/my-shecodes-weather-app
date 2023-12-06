@@ -64,8 +64,8 @@ p {
 }
 
 .temperature-emoji {
-  font-size: 40px;
-  margin-top: 22px;
+  width: 40%;
+  height: 90px;
 }
 
 .temperature-value {
