@@ -61,23 +61,31 @@ function getForecast(city) {
   axios(apiUrl).then(displayForecast);
 }
 
-function displayForecast() {
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+function displayForecast(response) {
+  console.log(response.data);
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      ` <div class="weather-forecast-date">${day}</div>
-                    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png" class="temperature-emoji" alt="" width="42"/>
-                    <div class="weather-forecast-temperature">
-                        <span class="weather-forecast-temperature-max">
-                            18°
-                        </span>
-                        <span class="weather-forecast-temperature-min">
-                            12°
-                        </span>
-                    </div>`;
+  response.data.daily.forEach(function (day, index) {
+    if (index > 0 && index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `
+      <div class="weather-forecast-day">
+              <div class="weather-forecast-date">${formatDay(day.time)}</div>
+              <div><img src="${
+                day.condition.icon_url
+              }" class="weather-forecast-icon" /></div>
+              <div class="weather-forecast-temp">
+                <strong>${Math.round(day.temperature.maximum)}°</strong></div>
+                <div class="weather-forecast-temp">${Math.round(
+                  day.temperature.minimum
+                )}°</div>
+          </div>
+        </div>
+      `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
